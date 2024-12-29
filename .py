@@ -8,6 +8,9 @@ def print_slow(text):
         time.sleep(0.05)
     print()
 
+
+print ("teste git alteracao sla sem ideia para colocar aqui")
+
 def jogo_adivinhacao():
     print_slow("\nBem-vindo ao jogo de Adivinhação Mágica!")
     print_slow("Eu sou um mago computadorizado e escolhi um número entre 1 e 20.")
