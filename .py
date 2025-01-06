@@ -1,55 +1,43 @@
-import random
-import time
-
-def print_slow(text):
-    """Imprime o texto lentamente para criar suspense."""
-    for char in text:
-        print(char, end='', flush=True)
-        time.sleep(0.05)
-    print()
-
-
-print ("teste git alteracao sla sem ideia para colocar aqui")
-
-def jogo_adivinhacao():
-    print_slow("\nBem-vindo ao jogo de Adivinhação Mágica!")
-    print_slow("Eu sou um mago computadorizado e escolhi um número entre 1 e 20.")
-    print_slow("Será que você consegue adivinhar? Vamos descobrir!\n")
-
-    numero_secreto = random.randint(1, 20)
-    tentativas = 0
+def calculadora():
+    print("Bem-vindo à Calculadora em Python!")
+    print("Selecione a operação desejada:")
+    print("1 - Adição")
+    print("2 - Subtração")
+    print("3 - Multiplicação")
+    print("4 - Divisão")
 
     while True:
-        try:
-            palpite = int(input("Digite seu palpite (entre 1 e 20): "))
+        # Entrada do usuário para a operação
+        escolha = input("Escolha uma opção (1/2/3/4): ")
 
-            if palpite < 1 or palpite > 20:
-                print_slow("Ei, está trapaceando? Escolha um número entre 1 e 20!")
+        # Verifica se a entrada é válida
+        if escolha in ['1', '2', '3', '4']:
+            try:
+                num1 = float(input("Digite o primeiro número: "))
+                num2 = float(input("Digite o segundo número: "))
+            except ValueError:
+                print("Por favor, insira números válidos.")
                 continue
 
-            tentativas += 1
-
-            if palpite < numero_secreto:
-                print_slow("Hmm... muito baixo! Tente novamente.")
-            elif palpite > numero_secreto:
-                print_slow("Uau, muito alto! Tente de novo.")
-            else:
-                print_slow(f"\nIncrível! Você acertou o número secreto ({numero_secreto}) em {tentativas} tentativas!")
-
-                if tentativas <= 3:
-                    print_slow("Você é praticamente um mago das adivinhações!")
-                elif tentativas <= 6:
-                    print_slow("Nada mal, suas habilidades são impressionantes!")
+            if escolha == '1':
+                print(f"O resultado de {num1} + {num2} é {num1 + num2}")
+            elif escolha == '2':
+                print(f"O resultado de {num1} - {num2} é {num1 - num2}")
+            elif escolha == '3':
+                print(f"O resultado de {num1} * {num2} é {num1 * num2}")
+            elif escolha == '4':
+                if num2 != 0:
+                    print(f"O resultado de {num1} / {num2} é {num1 / num2}")
                 else:
-                    print_slow("Finalmente! Eu estava começando a cochilar... mas bom trabalho!")
-                break
-        except ValueError:
-            print_slow("Isso não é um número válido! Tente novamente com um número de 1 a 20.")
+                    print("Erro: Divisão por zero não é permitida.")
+        else:
+            print("Opção inválida. Tente novamente.")
 
-if __name__ == "__main__":
-    jogar = "s"
-    while jogar.lower() == "s":
-        jogo_adivinhacao()
-        jogar = input("\nQuer jogar novamente? (s/n): ")
+        # Pergunta ao usuário se deseja continuar
+        continuar = input("Deseja realizar outra operação? (s/n): ").lower()
+        if continuar != 's':
+            print("Obrigado por usar a calculadora. Até a próxima!")
+            break
 
-    print_slow("\nObrigado por jogar! Até a próxima aventura mágica!\n")
+# Executa a calculadora
+calculadora()
